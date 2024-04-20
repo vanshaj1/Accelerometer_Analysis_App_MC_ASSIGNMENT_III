@@ -29,3 +29,5 @@
 
 *
 <img height="600" src="Accelerometer Img2.jpg" width="300"/>
+
+
