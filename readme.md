@@ -30,4 +30,54 @@
 *
 <img height="600" src="Accelerometer Img2.jpg" width="300"/>
 
+# Prediction of next 10 sec changes in accelerometer across three angles using previous data
+* I collected 100 values of each angles across four different intervals of accelerometer such as DELAY_NORMAL, DELAY_UI, DELAY_GAME and 10000 ms
+* I used linear regression to predict next ten second values for the three axis across these four intervals and plot the following graphs of actual vs predicted values
 
+#### DELAY_NORMAL 
+#####  For x axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/x axis.png" width="600"/>
+* Models Mean squared error is :- 119
+##### For y axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/y axis.png" width="600"/>
+* Models Mean squared error is :- 176
+##### For z axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/z axis.png" width="600"/>
+* Models Mean squared error is :- 302
+#### DELAY_UI
+#####  For x axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/x axis.png" width="600"/>
+* Models Mean squared error is :- 6.76
+##### For y axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/y axis.png" width="600"/>
+* Models Mean squared error is :- 78.095
+##### For z axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/z axis.png" width="600"/>
+* Models Mean squared error is :- 120
+
+#### DELAY_GAME
+##### For x axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/x axis.png" width="600"/>
+* Models Mean squared error is :- 99
+##### For y axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/y axis.png" width="600"/>
+* Models Mean squared error is :- 148
+##### For z axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/z axis.png" width="600"/>
+* Models Mean squared error is :- 141
+#### DELAY_10000
+##### For x axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/x axis.png" width="600"/>
+* Models Mean squared error is :- 30
+##### For y axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/y axis.png" width="600"/>
+* Models Mean squared error is :- 315
+##### For z axis
+* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/z axis.png" width="600"/>
+* Models Mean squared error is :- 93
+
+##### Note
+* These Mean square errors are quite high but it is because of the no of samples on which model is trained on. 
+* I trained linear regression on 90 samples only. So I think according to this no, these nos are reasonably good
+
+  
