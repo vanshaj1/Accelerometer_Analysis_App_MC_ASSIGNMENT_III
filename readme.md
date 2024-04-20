@@ -36,44 +36,45 @@
 
 #### DELAY_NORMAL 
 #####  For x axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/x axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/x axis.png" width="400"/>
 * Models Mean squared error is :- 119
 ##### For y axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/y axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/y axis.png" width="400"/>
 * Models Mean squared error is :- 176
 ##### For z axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/z axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/Normal Delay/z axis.png" width="400"/>
 * Models Mean squared error is :- 302
+
 #### DELAY_UI
 #####  For x axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/x axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/x axis.png" width="400"/>
 * Models Mean squared error is :- 6.76
 ##### For y axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/y axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/y axis.png" width="400"/>
 * Models Mean squared error is :- 78.095
 ##### For z axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/z axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/UI Delay/z axis.png" width="400"/>
 * Models Mean squared error is :- 120
 
 #### DELAY_GAME
 ##### For x axis
-* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/x axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/x axis.png" width="400"/>
 * Models Mean squared error is :- 99
 ##### For y axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/y axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/y axis.png" width="400"/>
 * Models Mean squared error is :- 148
 ##### For z axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/z axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/z axis.png" width="400"/>
 * Models Mean squared error is :- 141
 #### DELAY_10000
 ##### For x axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/x axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/x axis.png" width="400"/>
 * Models Mean squared error is :- 30
 ##### For y axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/y axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/y axis.png" width="400"/>
 * Models Mean squared error is :- 315
 ##### For z axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/z axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/10000 Delay/z axis.png" width="400"/>
 * Models Mean squared error is :- 93
 
 ##### Note
