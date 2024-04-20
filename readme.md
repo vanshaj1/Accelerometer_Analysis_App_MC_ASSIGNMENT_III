@@ -57,7 +57,7 @@
 
 #### DELAY_GAME
 ##### For x axis
-* <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/x axis.png" width="600"/>
+* <img height="300" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/x axis.png" width="600"/>
 * Models Mean squared error is :- 99
 ##### For y axis
 * <img height="600" src="Assignment 3 Helpers/Prediction 10s  and Comparison Graphs/change Interval/GAME Delay/y axis.png" width="600"/>
