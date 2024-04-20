@@ -9,13 +9,17 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +40,7 @@ import androidx.compose.ui.text.style.TextAlign
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.checkSelfPermission
 import co.yml.charts.ui.linechart.LineChart
 import co.yml.charts.ui.linechart.model.GridLines
@@ -53,6 +58,9 @@ import co.yml.charts.ui.wavechart.model.Wave
 import co.yml.charts.ui.wavechart.model.WaveChartData
 import co.yml.charts.ui.wavechart.model.WaveFillColor
 import co.yml.charts.ui.wavechart.model.WavePlotData
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.GlobalScope
@@ -68,173 +76,24 @@ import kotlin.time.Duration.Companion.seconds
 
 
 private lateinit var gson: Gson
-//citation:- https://www.youtube.com/watch?v=HGsVBqUrnGY, https://github.com/codeandtheory/YCharts?tab=readme-ov-file
+//citation:- https://github.com/aldajo92/AndroidKt_MpAndroidChartCompose
 @Composable
 fun SensingAndGraphOutputComponent(modifier: Modifier, x: Float,y: Float, z:Float,showGraph: Boolean,dataStored:List<AxisInfo>){
     val steps = 20
-    var pointsDataX: MutableList<Point> = mutableListOf()
-    var pointsDataY: MutableList<Point> = mutableListOf()
-    var pointsDataZ: MutableList<Point> = mutableListOf()
-    Log.d("TATTY2", dataStored.toString())
+    var pointsDataX: MutableList<Float> = mutableListOf()
+    var pointsDataY: MutableList<Float> = mutableListOf()
+    var pointsDataZ: MutableList<Float> = mutableListOf()
+
     dataStored.forEach {
-        pointsDataX.add(Point(it.time.toFloat(),it.x))
-        pointsDataY.add(Point(it.time.toFloat(),it.y))
-        pointsDataZ.add(Point(it.time.toFloat(),it.z))
+        pointsDataX.add(it.x.toFloat())
+        pointsDataY.add(it.y.toFloat())
+        pointsDataZ.add(it.z.toFloat())
     }
-//    val xAxisData = AxisData.Builder()
-//        .axisStepSize(100.dp)
-//        .backgroundColor(Color.Transparent)
-//        .steps(pointsDataX.size - 1)
-//        .labelData { i -> i.toString() }
-//        .labelAndAxisLinePadding(15.dp)
-//        .axisLineColor(MaterialTheme.colorScheme.tertiary)
-//        .axisLabelColor(MaterialTheme.colorScheme.tertiary)
-//        .build()
-//
-//    val yAxisData = AxisData.Builder()
-//        .steps(steps)
-//        .backgroundColor(Color.Transparent)
-//        .labelAndAxisLinePadding(20.dp)
-//        .labelData { i ->
-//            val yScale = 100 / steps
-//            (i).toString()
-//        }
-//        .axisLineColor(MaterialTheme.colorScheme.tertiary)
-//        .axisLabelColor(MaterialTheme.colorScheme.tertiary)
-//        .build()
-
-//    val lineChartData1 = LineChartData(
-//        linePlotData = LinePlotData(
-//            lines = listOf(
-//                Line(
-//                    dataPoints = pointsDataX,
-//                    LineStyle(
-//                        color = MaterialTheme.colorScheme.tertiary,
-//                        lineType = LineType.SmoothCurve(isDotted = false)
-//                    ),
-//                    IntersectionPoint(
-//                        color=MaterialTheme.colorScheme.tertiary
-//                    ),
-//                    SelectionHighlightPoint(color= MaterialTheme.colorScheme.tertiary),
-//                    ShadowUnderLine(
-//                        alpha = 0.5f,
-//                        brush = Brush.verticalGradient(
-//                            colors = listOf(
-//                                MaterialTheme.colorScheme.inversePrimary,
-//                                Color.Transparent
-//                            )
-//                        )
-//                    ),
-//                    SelectionHighlightPopUp()
-//                )
-//            ),
-//        ),
-//        xAxisData = xAxisData,
-//        yAxisData = yAxisData,
-//        gridLines = GridLines(color = MaterialTheme.colorScheme.outline),
-//        backgroundColor = MaterialTheme.colorScheme.surface
-//    )
-//
-//
-//
-//
-//    val lineChartData2 = LineChartData(
-//        linePlotData = LinePlotData(
-//            lines = listOf(
-//                Line(
-//                    dataPoints = pointsDataY,
-//                    LineStyle(
-//                        color = MaterialTheme.colorScheme.tertiary,
-//                        lineType = LineType.SmoothCurve(isDotted = false)
-//                    ),
-//                    IntersectionPoint(
-//                        color=MaterialTheme.colorScheme.tertiary
-//                    ),
-//                    SelectionHighlightPoint(color= MaterialTheme.colorScheme.tertiary),
-//                    ShadowUnderLine(
-//                        alpha = 0.5f,
-//                        brush = Brush.verticalGradient(
-//                            colors = listOf(
-//                                MaterialTheme.colorScheme.inversePrimary,
-//                                Color.Transparent
-//                            )
-//                        )
-//                    ),
-//                    SelectionHighlightPopUp()
-//                )
-//            ),
-//        ),
-//        xAxisData = xAxisData,
-//        yAxisData = yAxisData,
-//        gridLines = GridLines(color = MaterialTheme.colorScheme.outline),
-//        backgroundColor = MaterialTheme.colorScheme.surface
-//    )
-//
-//
-//    val lineChartData3 = LineChartData(
-//        linePlotData = LinePlotData(
-//            lines = listOf(
-//                Line(
-//                    dataPoints = pointsDataZ,
-//                    LineStyle(
-//                        color = MaterialTheme.colorScheme.tertiary,
-//                        lineType = LineType.SmoothCurve(isDotted = false)
-//                    ),
-//                    IntersectionPoint(
-//                        color=MaterialTheme.colorScheme.tertiary
-//                    ),
-//                    SelectionHighlightPoint(color= MaterialTheme.colorScheme.tertiary),
-//                    ShadowUnderLine(
-//                        alpha = 0.5f,
-//                        brush = Brush.verticalGradient(
-//                            colors = listOf(
-//                                MaterialTheme.colorScheme.inversePrimary,
-//                                Color.Transparent
-//                            )
-//                        )
-//                    ),
-//                    SelectionHighlightPopUp()
-//                )
-//            ),
-//        ),
-//        xAxisData = xAxisData,
-//        yAxisData = yAxisData,
-//        gridLines = GridLines(color = MaterialTheme.colorScheme.outline),
-//        backgroundColor = MaterialTheme.colorScheme.surface
-//    )
 
 
-    val xAxisData = AxisData.Builder()
-        .axisStepSize(30.dp)
-        .steps(pointsDataX.size - 1)
-        .labelData { index -> index.toString() }
-        .build()
-    val nums = arrayOf(-4, 3,2,1,0,1,2,3,4)
-    val yAxisData = AxisData.Builder()
-        .steps(8)
-        .axisStepSize(1.dp)
-        .labelAndAxisLinePadding(20.dp)
-        .labelData { index ->  nums.get(index).toString() }
-        .build()
-
-
-    val waveChartData = WaveChartData(
-        wavePlotData = WavePlotData(
-            lines = listOf(
-                Wave(
-                    dataPoints = pointsDataX,
-                    waveStyle = LineStyle(color = Color.Black),
-                    selectionHighlightPoint = SelectionHighlightPoint(),
-                    shadowUnderLine = ShadowUnderLine(),
-                    selectionHighlightPopUp = SelectionHighlightPopUp(),
-                    waveFillColor = WaveFillColor(topColor = Color.Green, bottomColor = Color.Red),
-                )
-            )
-        ),
-        xAxisData = xAxisData,
-        yAxisData = yAxisData,
-        gridLines = GridLines()
-    )
+    val lineDataPointsX = LineData(LineDataSetCreation(pointsDataX))
+    val lineDataPointsY = LineData(LineDataSetCreation(pointsDataY))
+    val lineDataPointsZ = LineData(LineDataSetCreation(pointsDataZ))
 
     Column (
         modifier = modifier.conditional(showGraph){
@@ -258,44 +117,22 @@ fun SensingAndGraphOutputComponent(modifier: Modifier, x: Float,y: Float, z:Floa
                         ,style= TextStyle(
                             color = Color.White,
                             textAlign = TextAlign.Center
-                        )
+                        ),
+                        fontSize = 20.sp
                     )
                 }
+            Text(modifier = Modifier.padding(5.dp).background(color = Color.White),text = "For X axis:- ")
+            LineChartCard(lineData = lineDataPointsX)
 
-//            Text(modifier = Modifier
-//                    .paddingFromBaseline(top = 50.dp)
-//                    .padding(start=95.dp),
-//                text = "Accelerometer Data analysis",
-//                textAlign = TextAlign.Center,
-//                style= TextStyle(
-//                    background = Color(android.graphics.Color.parseColor("#A92EF5")),
-//                    color = Color.White
-//                )
-////            )
-//            LineChart(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .height(450.dp),
-//                lineChartData = lineChartData1
-//            )
-//            LineChart(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .height(250.dp),
-//                lineChartData = lineChartData2
-//            )
-//            LineChart(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .height(250.dp),
-//                lineChartData = lineChartData3
-//            )
-            WaveChart(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp),
-                waveChartData = waveChartData
-            )
+            Spacer(modifier = Modifier.padding(5.dp))
+
+            Text(modifier = Modifier.padding(10.dp).background(color = Color.White),text = "For Y axis:- ")
+            LineChartCard(lineData = lineDataPointsY)
+
+            Spacer(modifier = Modifier.padding(10.dp))
+
+            Text(modifier = Modifier.padding(10.dp).background(color = Color.White),text = "For Z axis:- ")
+            LineChartCard(lineData = lineDataPointsZ)
         }
     }
 }
@@ -320,11 +157,44 @@ fun SaveToDatabase(time:Int,x:Float,y:Float,z:Float){
     }
 }
 
-//fun loadDataFromDatabase(time: Int){
-//    GlobalScope.launch {
-//        var temp: AxisInfo? = null
-//        temp = async {
-//            axisDB.axisInfoDao().getAxisInfoByTime(time)
-//        }.await()
-//    }
-//}
+fun LineDataSetCreation(listOxygenData: List<Float>): LineDataSet{
+    // List<Float> -> List<Entry> -> LineDataSet
+    val DataSet = listOxygenData.createDataSetWithColor(
+        datasetColor = android.graphics.Color.BLUE,
+        label = "Acceleration Vs Time"
+    )
+    return DataSet
+}
+
+
+fun List<Float>.createDataSetWithColor(
+    datasetColor: Int = android.graphics.Color.GREEN,
+    label: String = "No Label"
+): LineDataSet {
+    // List<Float> -> List<Entry>
+    val entries = this.mapIndexed { index, value ->
+        Entry(index.toFloat(), value)
+    }
+    // List<Entry> -> LineDataSet
+    return LineDataSet(entries, label).apply {
+        color = datasetColor
+        setDrawFilled(false)
+        setDrawCircles(false)
+        mode = LineDataSet.Mode.CUBIC_BEZIER
+    }
+}
+
+@Composable
+fun LineChartCard(modifier: Modifier = Modifier, lineData: LineData) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .aspectRatio(2f) // (width:height) 2:1
+            .padding(16.dp)
+    ) {
+        LineChartComponent(
+            modifier = Modifier.fillMaxSize(),
+            lineData = lineData
+        )
+    }
+}
